@@ -15,7 +15,8 @@ import com.google.gson.JsonObject;
 import com.jason.demo.dao.UserDao;
 import com.jason.demo.entity.User;
 
-@RestController
+//@RestController
+@Controller
 @RequestMapping("/")
 public class JasonDemoController {
 	
