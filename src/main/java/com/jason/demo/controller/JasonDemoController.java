@@ -1,17 +1,12 @@
 package com.jason.demo.controller;
 
-import javax.servlet.http.HttpServletResponse;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.JsonObject;
 import com.jason.demo.dao.UserDao;
 import com.jason.demo.entity.User;
 
@@ -19,6 +14,7 @@ import com.jason.demo.entity.User;
 @Controller
 @RequestMapping("/")
 public class JasonDemoController {
+	private final static Logger logger = LogManager.getLogger();
 	
 	@Autowired
 	private UserDao userDao;
@@ -26,6 +22,7 @@ public class JasonDemoController {
 	@RequestMapping("/XXX")
 	public ModelAndView restredirect(){  
 //		return new ModelAndView("/hey/theFirstPage.jsp");
+		logger.debug("XXX is working");
 		return new ModelAndView("/hey/NewFile.html");
 	}
 	
