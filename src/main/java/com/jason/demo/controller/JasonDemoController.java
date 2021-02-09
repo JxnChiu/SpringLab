@@ -15,44 +15,46 @@ import com.jason.demo.entity.User;
 @RequestMapping("/")
 public class JasonDemoController {
 	private final static Logger logger = LogManager.getLogger();
-	
+
 	@Autowired
 	private UserDao userDao;
-	
+
 	@RequestMapping("/XXX")
-	public ModelAndView restredirect(){  
+	public ModelAndView restredirect() {
 //		return new ModelAndView("/hey/theFirstPage.jsp");
 		logger.debug("XXX is working");
 		return new ModelAndView("/hey/NewFile.html");
 	}
-	
+
 	@RequestMapping("/OOO")
-	public String stringForward(){  
+	public String stringForward() {
 		return "/hey/theFirstPage.jsp";
 	}
-	
+
 	@RequestMapping("/YYY")
-	public String stringRedirect(){  
+	public String stringRedirect() {
 		return "redirect:/hey/theFirstPage.jsp";
 	}
-
 
 	@RequestMapping("/")
 	public String noEndPoint() {
 		return "Hello,World!";
 	}
 
-	
 	@RequestMapping("/save")
 	public void returnJSON() {
+
 		User entity = new User();
-		entity.setName("first");
-		entity.setEmail("first@fist");
-		entity.setPassword("first_password");
-		
+		entity.setAccount("first");
+		entity.setMema("memala");
+		entity.setEmail("jason@joHoChio.com");
+//		entity.setIsDelete(false);
+
 		userDao.save(entity);
+		System.out.println("\n這裡\n");
+		return;
 	}
-	
+
 //	@Value("${com.jj.name}")
 //    private String name;
 //

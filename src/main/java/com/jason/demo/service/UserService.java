@@ -7,6 +7,7 @@ import com.jason.demo.dao.UserDao;
 
 @Service
 public class UserService {
+	
 	@Autowired
 	private UserDao userDao;
 }

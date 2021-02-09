@@ -7,5 +7,5 @@ import com.jason.demo.entity.User;
 
 @Repository
 public interface UserDao extends JpaRepository<User, Long>{
-	User findById(String id);
+//	User findByOid(String oid);
 }
