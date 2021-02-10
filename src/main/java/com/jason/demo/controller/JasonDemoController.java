@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jason.demo.dao.UserDao;
-import com.jason.demo.entity.User;
+import com.jason.demo.entity.UserEntity;
+import com.jason.demo.service.UserService;
 
 //@RestController
 @Controller
@@ -18,7 +19,14 @@ public class JasonDemoController {
 
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private UserService userSvc;
 
+	
+	
+	
+	
 	@RequestMapping("/XXX")
 	public ModelAndView restredirect() {
 //		return new ModelAndView("/hey/theFirstPage.jsp");
@@ -44,7 +52,7 @@ public class JasonDemoController {
 	@RequestMapping("/save")
 	public void returnJSON() {
 
-		User entity = new User();
+		UserEntity entity = new UserEntity();
 		entity.setAccount("first");
 		entity.setMema("memala");
 		entity.setEmail("jason@joHoChio.com");
