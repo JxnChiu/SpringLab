@@ -10,11 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
 @Table(name = "Table_User")
+@JsonInclude(Include.NON_NULL)
 public class UserEntity implements Serializable {
 
 	/**
@@ -41,20 +45,21 @@ public class UserEntity implements Serializable {
 	private String mema;
 
 	// email 可以驗證嗎？
+	@Email(message = "Email should be valid")
 	@Column(name = "email", length = 64, nullable = false)
 	private String email;
 
 	// 預設值不會用???????????
 //	@Column(name = "is_delete", columnDefinition = "boolean default true")
 	@Column(name = "is_delete")
-	private Boolean isDelete = true;
+	private Boolean isDelete = false;
 
 //	@Column(name = "type", columnDefinition = "integer default 25")
 	@Column(name = "type")
 	private Integer type = 25;
 
 	// 當下時間要怎麼抓
-	@Column(name = "create_time")
+	@Column(name = "create_time", updatable = false)
 	private Timestamp createTime;
 
 	@Column(name = "update_time")

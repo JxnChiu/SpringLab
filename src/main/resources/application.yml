@@ -1,20 +1,33 @@
-#伺服器設定
+###############################################################################
+## Server Related
+###############################################################################
 server:
-    port: 8081
-
+  port: 8081
+###############################################################################
+## Database Related
+############################################################################### 
 spring:
-    datasource:
-        driver-class-name: org.postgresql.Driver
-        password: 99988776
-        url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
-        username: postgres
-    jpa:
-        database-platform: org.hibernate.dialect.PostgreSQL10Dialect
-        hibernate:
-            ddl-auto: update
-            show-sql: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
+    username: postgres
+    password: 99988776
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    hibernate:
+      # validate 加載 Hibernate 時，驗證創建數據庫表結構
+      # create 每次加載 Hibernate ，重新創建數據庫表結構，這就是導致數據庫表數據丟失的原因。
+      # create-drop 加載 Hibernate 時創建，退出時刪除表結構
+      # update 加載 Hibernate 自動更新數據庫結構
+      # none 表示無效果
+      # 所以，如果你想保留表結構的數據，使用 update 即可。
+      ddl-auto: update
+      show-sql: true
+###############################################################################
+## Else
+############################################################################### 
 com:
-    jj:
-        name: J.J.Huang
-        sentence: ${com.jj.name} 在這邊 ${com.jj.want}
-        want: 祝大家新年快樂！
+  jj:
+    name: J.J.Huang
+    sentence: ${com.jj.name} 在這邊 ${com.jj.want}
+    want: 祝大家新年快樂！
