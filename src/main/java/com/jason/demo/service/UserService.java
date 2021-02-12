@@ -15,7 +15,7 @@ import com.jason.demo.entity.UserEntity;
 public class UserService {
 
 	@Autowired
-	@Qualifier("UserDao")
+//	@Qualifier("UserDao")
 	private UserDao dao;
 
 	// 新增 & 修改
