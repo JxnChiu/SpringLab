@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -45,7 +44,6 @@ public class UserEntity implements Serializable {
 	private String mema;
 
 	// email 可以驗證嗎？
-	@Email(message = "Email should be valid")
 	@Column(name = "email", length = 64, nullable = false)
 	private String email;
 
