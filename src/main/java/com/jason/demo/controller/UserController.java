@@ -24,7 +24,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/getAllUser", method = RequestMethod.GET, produces = "application/JSON")
+	@RequestMapping(value = "/getAllUser", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String addUserPage() {
 		List<UserEntity> userList = new ArrayList<UserEntity>();
 		userList = userService.getAll();
@@ -32,17 +32,23 @@ public class UserController {
 		return JsonUtils.toJsonString(userList);
 	}
 
-	@RequestMapping(value = "/addUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String addUser(@RequestBody UserEntity userEntity) {
-
-		userService.saveAndFlush(userEntity);
-		return "成功";
-
+	@RequestMapping(value = "/getUser", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getUser(@RequestBody UserEntity userEntity) {
+		Long oid = userEntity.getOid();
+		UserEntity entity = userService.getByLongId(oid);
+		return JsonUtils.toJsonString(entity);
 	}
 
-	@RequestMapping(value = "/updateUser", method = RequestMethod.PUT)
-	public void updateUser(@RequestBody UserEntity userEntity) {
-		userService.saveAndFlush(userEntity);
+	@RequestMapping(value = "/addUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String addUser(@RequestBody UserEntity userEntity) {
+		UserEntity entity = userService.saveAndFlush(userEntity);
+		return JsonUtils.toJsonString(entity);
+	}
+
+	@RequestMapping(value = "/updateUser", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String updateUser(@RequestBody UserEntity userEntity) {
+		UserEntity entity = userService.saveAndFlush(userEntity);
+		return JsonUtils.toJsonString(entity);
 	}
 
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.DELETE)

@@ -5,11 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.jason.demo.entity.UserEntity;
 
-@Repository
+@Repository()
 public interface UserDao extends JpaRepository<UserEntity, Long> {
 	UserEntity findByOid(Long oid);
-	
-//	List<UserEntity> findAll();
-	
-
 }
