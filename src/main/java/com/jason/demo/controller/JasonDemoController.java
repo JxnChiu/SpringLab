@@ -20,13 +20,6 @@ public class JasonDemoController {
 	@Autowired
 	private UserDao userDao;
 	
-	@Autowired
-	private UserService userSvc;
-
-	
-	
-	
-	
 	@RequestMapping("/XXX")
 	public ModelAndView restredirect() {
 //		return new ModelAndView("/hey/theFirstPage.jsp");
